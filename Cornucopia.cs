@@ -7,7 +7,8 @@ using Random = UnityEngine.Random;
 
 namespace Oxide.Plugins
 {
-    [Info("Cornucopia", "Deicide666ra", "1.1.8", ResourceId = 1264)]
+    [Info("Cornucopia", "RFC1920", "1.1.9", ResourceId = 1264)]
+    // Thanks to Deicide666ra for allowing me to continue his work on this plugin
     class Cornucopia : RustPlugin
     {
         class CornuConfig
@@ -15,38 +16,38 @@ namespace Oxide.Plugins
             public CornuConfig()
             {
                 // Animals
-                Animals.Add(new CornuConfigItem { Prefab = "assets/bundled/prefabs/autospawn/animals/chicken.prefab", Min = -1, Max = -1, IgnoreIrridiated = true });
-                Animals.Add(new CornuConfigItem { Prefab = "assets/bundled/prefabs/autospawn/animals/horse.prefab", Min = -1, Max = -1, IgnoreIrridiated = true });
-                Animals.Add(new CornuConfigItem { Prefab = "assets/bundled/prefabs/autospawn/animals/boar.prefab", Min = -1, Max = -1, IgnoreIrridiated = true });
-                Animals.Add(new CornuConfigItem { Prefab = "assets/bundled/prefabs/autospawn/animals/stag.prefab", Min = -1, Max = -1, IgnoreIrridiated = true });
-                Animals.Add(new CornuConfigItem { Prefab = "assets/bundled/prefabs/autospawn/animals/wolf.prefab", Min = -1, Max = -1, IgnoreIrridiated = true });
-                Animals.Add(new CornuConfigItem { Prefab = "assets/bundled/prefabs/autospawn/animals/bear.prefab", Min = -1, Max = -1, IgnoreIrridiated = true });
+                Animals.Add(new CornuConfigItem { Prefab = "assets/rust.ai/agents/chicken/chicken.prefab", Min = -1, Max = -1, IgnoreIrradiated = true });
+                Animals.Add(new CornuConfigItem { Prefab = "assets/rust.ai/agents/horse/horse.prefab", Min = -1, Max = -1, IgnoreIrradiated = true });
+                Animals.Add(new CornuConfigItem { Prefab = "assets/rust.ai/agents/boar/boar.prefab", Min = -1, Max = -1, IgnoreIrradiated = true });
+                Animals.Add(new CornuConfigItem { Prefab = "assets/rust.ai/agents/stag/stag.prefab", Min = -1, Max = -1, IgnoreIrradiated = true });
+                Animals.Add(new CornuConfigItem { Prefab = "assets/rust.ai/agents/wolf/wolf.prefab", Min = -1, Max = -1, IgnoreIrradiated = true });
+                Animals.Add(new CornuConfigItem { Prefab = "assets/rust.ai/agents/bear/bear.prefab", Min = -1, Max = -1, IgnoreIrradiated = true });
 
                 // Ore nodes
-                Ores.Add(new CornuConfigItem { Prefab = "assets/bundled/prefabs/autospawn/resource/ores/stone-ore.prefab", Min = -1, Max = -1, IgnoreIrridiated = true });
-                Ores.Add(new CornuConfigItem { Prefab = "assets/bundled/prefabs/autospawn/resource/ores/metal-ore.prefab", Min = -1, Max = -1, IgnoreIrridiated = true });
-                Ores.Add(new CornuConfigItem { Prefab = "assets/bundled/prefabs/autospawn/resource/ores/sulfur-ore.prefab", Min = -1, Max = -1, IgnoreIrridiated = true });
+                Ores.Add(new CornuConfigItem { Prefab = "assets/bundled/prefabs/autospawn/resource/ores/stone-ore.prefab", Min = -1, Max = -1, IgnoreIrradiated = true });
+                Ores.Add(new CornuConfigItem { Prefab = "assets/bundled/prefabs/autospawn/resource/ores/metal-ore.prefab", Min = -1, Max = -1, IgnoreIrradiated = true });
+                Ores.Add(new CornuConfigItem { Prefab = "assets/bundled/prefabs/autospawn/resource/ores/sulfur-ore.prefab", Min = -1, Max = -1, IgnoreIrradiated = true });
 
                 // Silver barrels
-                Loots.Add(new CornuConfigItem { Prefab = "assets/bundled/prefabs/radtown/loot_barrel_1.prefab", Min = -1, Max = -1, IgnoreIrridiated = true, DeleteEmtpy = false });
+                Loots.Add(new CornuConfigItem { Prefab = "assets/bundled/prefabs/radtown/loot_barrel_1.prefab", Min = -1, Max = -1, IgnoreIrradiated = true, DeleteEmpty = false });
 
                 // Brown barrels
-                Loots.Add(new CornuConfigItem { Prefab = "assets/bundled/prefabs/radtown/loot_barrel_2.prefab", Min = -1, Max = -1, IgnoreIrridiated = true, DeleteEmtpy = false });
+                Loots.Add(new CornuConfigItem { Prefab = "assets/bundled/prefabs/radtown/loot_barrel_2.prefab", Min = -1, Max = -1, IgnoreIrradiated = true, DeleteEmpty = false });
 
                 // Oil Drums
-                Loots.Add(new CornuConfigItem { Prefab = "assets/bundled/prefabs/radtown/oil_barrel.prefab", Min = -1, Max = -1, IgnoreIrridiated = true, DeleteEmtpy = false });
+                Loots.Add(new CornuConfigItem { Prefab = "assets/bundled/prefabs/radtown/oil_barrel.prefab", Min = -1, Max = -1, IgnoreIrradiated = true, DeleteEmpty = false });
 
                 // Trashcans
-                Loots.Add(new CornuConfigItem { Prefab = "assets/bundled/prefabs/radtown/loot_trash.prefab", Min = -1, Max = -1, IgnoreIrridiated = true, DeleteEmtpy = false });
+                Loots.Add(new CornuConfigItem { Prefab = "assets/bundled/prefabs/radtown/loot_trash.prefab", Min = -1, Max = -1, IgnoreIrradiated = true, DeleteEmpty = false });
 
                 // Trash piles (food)
-                Loots.Add(new CornuConfigItem { Prefab = "assets/bundled/prefabs/autospawn/resource/loot/trash-pile-1.prefab", Min = -1, Max = -1, IgnoreIrridiated = true, DeleteEmtpy = false });
+                Loots.Add(new CornuConfigItem { Prefab = "assets/bundled/prefabs/autospawn/resource/loot/trash-pile-1.prefab", Min = -1, Max = -1, IgnoreIrradiated = true, DeleteEmpty = false });
 
                 // Weapon crates
-                Loots.Add(new CornuConfigItem { Prefab = "assets/bundled/prefabs/radtown/crate_normal.prefab", Min = -1, Max = -1, IgnoreIrridiated = true, DeleteEmtpy = false });
+                Loots.Add(new CornuConfigItem { Prefab = "assets/bundled/prefabs/radtown/crate_normal.prefab", Min = -1, Max = -1, IgnoreIrradiated = true, DeleteEmpty = false });
 
                 // Box crates
-                Loots.Add(new CornuConfigItem { Prefab = "assets/bundled/prefabs/radtown/crate_normal_2.prefab", Min = -1, Max = -1, IgnoreIrridiated = true, DeleteEmtpy = false });
+                Loots.Add(new CornuConfigItem { Prefab = "assets/bundled/prefabs/radtown/crate_normal_2.prefab", Min = -1, Max = -1, IgnoreIrradiated = true, DeleteEmpty = false });
             }
 
             // Refresh Interval in minutes
@@ -71,13 +72,13 @@ namespace Oxide.Plugins
             public string Prefab;
             public int Min;
             public int Max;
-            public bool IgnoreIrridiated;
-            public bool DeleteEmtpy;
+            public bool IgnoreIrradiated;
+            public bool DeleteEmpty;
         }
 
         CornuConfig g_config;
         Timer g_refreshTimer;
-        //bool g_spawnBlock = true;
+        bool g_spawnBlock = true;
 
         void Loaded() => LoadConfigValues();
 
@@ -107,12 +108,12 @@ namespace Oxide.Plugins
         {
             var sb = new StringBuilder();
             sb.Append("<color=yellow>Cornucopia 1.1.4.0</color> · Controls resource abundance\n");
-            if (player.IsAdmin)
+            if(player.IsAdmin)
             {
-                sb.Append("  · ").AppendLine("<color=lime>/cdump</color> (<color=orange>cornu.dump</color>) for RCON stats");
-                sb.Append("  · ").AppendLine("<color=lime>/cspawn</color> (<color=orange>cornu.spawn</color>) adjusts resources");
-                sb.Append("  · ").AppendLine("<color=lime>/cfixloot</color> (<color=orange>cornu.fixloot</color>) loot box stacking fix");
-                sb.Append("  · ").Append("<color=lime>/cpurge</color> (<color=orange>cornu.purge</color>) deletes ALL resources");
+                sb.Append("  · ").AppendLine("<color=#22cc22>/cdump</color> (<color=orange>cornu.dump</color>) for RCON stats");
+                sb.Append("  · ").AppendLine("<color=#22cc22>/cspawn</color> (<color=orange>cornu.spawn</color>) adjusts resources");
+                sb.Append("  · ").AppendLine("<color=#22cc22>/cfixloot</color> (<color=orange>cornu.fixloot</color>) loot box stacking fix");
+                sb.Append("  · ").Append("<color=#22cc22>/cpurge</color> (<color=orange>cornu.purge</color>) deletes ALL resources");
             }
             player.ChatMessage(sb.ToString());
         }
@@ -124,7 +125,7 @@ namespace Oxide.Plugins
 
         void OnTimer()
         {
-            if (g_config.ApplyLootFix) FixLoot(null);
+            if(g_config.ApplyLootFix) FixLoot(null);
 
             //g_spawnBlock = false;
             try
@@ -139,7 +140,7 @@ namespace Oxide.Plugins
 
         void Unloaded()
         {
-            if (g_refreshTimer == null) return;
+            if(g_refreshTimer == null) return;
 
             g_refreshTimer.Destroy();
             g_refreshTimer = null;
@@ -203,41 +204,41 @@ namespace Oxide.Plugins
 
         void DumpSpawns(Dictionary<string, int> entities)
         {
-            foreach (var t in entities)
+            foreach(var t in entities)
                 Puts($"{t.Key.PadRight(50)} {t.Value}");
         }
 
         void DumpSpawns(Dictionary<string, IGrouping<string, BaseEntity>> entities)
         {
-            foreach (var t in entities)
+            foreach(var t in entities)
                 Puts($"{t.Key.PadRight(50)} {t.Value.Count()}");
         }
 
         [ConsoleCommand("cornu.dump")]
         void DumpCommand(ConsoleSystem.Arg arg)
         {
-            if (arg != null && arg.Player() != null && arg.Player().IsAdmin == false) return;
+            if(arg != null && arg.Player() != null && arg.Player().IsAdmin == false) return;
             DumpEntities();
         }
 
         [ConsoleCommand("cornu.spawn")]
         void SpawnCommand(ConsoleSystem.Arg arg)
         {
-            if (arg != null && arg.Player() != null && arg.Player().IsAdmin == false) return;
+            if(arg != null && arg.Player() != null && arg.Player().IsAdmin == false) return;
             MainSpawnCycle();
         }
 
         [ConsoleCommand("cornu.fixloot")]
         void FixLootCommand(ConsoleSystem.Arg arg)
         {
-            if (arg != null && arg.Player() != null && arg.Player().IsAdmin == false) return;
+            if(arg != null && arg.Player() != null && arg.Player().IsAdmin == false) return;
             FixLoot(null);
         }
 
         [ConsoleCommand("cornu.purge")]
         void PurgeCommand(ConsoleSystem.Arg arg)
         {
-            if (arg != null && arg.Player() != null && arg.Player().IsAdmin == false) return;
+            if(arg != null && arg.Player() != null && arg.Player().IsAdmin == false) return;
             Purge();
         }
 
@@ -258,7 +259,7 @@ namespace Oxide.Plugins
         [ChatCommand("cpurge")]
         void cmdPurge(BasePlayer player, string command, string[] args)
         {
-            if (!player.IsAdmin)
+            if(!player.IsAdmin)
             {
                 player.ChatMessage("You need to be admin to run this command, sorry buddy!");
                 return;
@@ -269,7 +270,7 @@ namespace Oxide.Plugins
         [ChatCommand("cfixloot")]
         void cmdFixLoot(BasePlayer player, string command, string[] args)
         {
-            if (!player.IsAdmin)
+            if(!player.IsAdmin)
             {
                 player.ChatMessage("You need to be admin to run this command, sorry buddy!");
                 return;
@@ -280,7 +281,7 @@ namespace Oxide.Plugins
         [ChatCommand("cdump")]
         void cmdDump(BasePlayer player, string command, string[] args)
         {
-            if (!player.IsAdmin)
+            if(!player.IsAdmin)
             {
                 player.ChatMessage("You need to be admin to run this command, sorry buddy!");
                 return;
@@ -291,7 +292,7 @@ namespace Oxide.Plugins
         [ChatCommand("cspawn")]
         void cmdSpawn(BasePlayer player, string command, string[] args)
         {
-            if (!player.IsAdmin)
+            if(!player.IsAdmin)
             {
                 player.ChatMessage("You need to be admin to run this command, sorry buddy!");
                 return;
@@ -313,34 +314,34 @@ namespace Oxide.Plugins
 
         void SubCycle(IEnumerable<BaseEntity> entities, IEnumerable<CornuConfigItem> limits, List<CollectibleEntity> collectibles, ref bool aborted)
         {
-            foreach (var spawn in limits)
+            foreach(var spawn in limits)
             {
-                if (spawn.Min == -1 && spawn.Max == -1) continue;
+                if(spawn.Min == -1 && spawn.Max == -1) continue;
 
                 var matches = entities.Where(r => r.PrefabName == spawn.Prefab);
 
-                if (matches.Count() < spawn.Min && spawn.Min != -1)
+                if(matches.Count() < spawn.Min && spawn.Min != -1)
                 {
-                    if (!aborted) BatchSpawn(matches.Count(), spawn.Min, spawn.Prefab, collectibles, ref aborted);
+                    if(!aborted) BatchSpawn(matches.Count(), spawn.Min, spawn.Prefab, collectibles, ref aborted);
                 }
-                else if (matches.Count() > spawn.Max && spawn.Max != -1)
+                else if(matches.Count() > spawn.Max && spawn.Max != -1)
                 {
                     PopulationControl(matches, spawn.Max);
                 }
 
                 var deleted = 0;
-                if (spawn.DeleteEmtpy)
+                if(spawn.DeleteEmpty)
                 {
-                    foreach (var match in matches.OfType<LootContainer>())
+                    foreach(var match in matches.OfType<LootContainer>())
                     {
-                        if (!match.inventory.itemList.Any())
+                        if(!match.inventory.itemList.Any())
                         {
                             match.Kill();
                             deleted++;
                         }
                     }
                 }
-                if (deleted > 0) Puts($"Deleted {deleted} empty {spawn.Prefab}");
+                if(deleted > 0) Puts($"Deleted {deleted} empty {spawn.Prefab}");
             }
         }
 
@@ -350,7 +351,7 @@ namespace Oxide.Plugins
             var doOres = g_config.Ores.Any(a => a.Min != -1 || a.Max != -1);
             var doLoots = g_config.Loots.Any(a => a.Min != -1 || a.Max != -1);
 
-            if (!doAnimals && !doOres && !doLoots)
+            if(!doAnimals && !doOres && !doLoots)
             {
                 Puts("Nothing to process, skipping MainSpawnCycle()");
                 return;
@@ -362,21 +363,21 @@ namespace Oxide.Plugins
 
             var aborted = false;
 
-            if (doAnimals)
+            if(doAnimals)
             {
                 tick = DateTime.Now;
                 SubCycle(Resources.FindObjectsOfTypeAll<BaseNpc>().Where(c => c.isActiveAndEnabled).Cast<BaseEntity>(), g_config.Animals, collectibles, ref aborted);
                 //Puts($"npc: {(DateTime.Now - tick).TotalMilliseconds} ms");
             }
 
-            if (doOres)
+            if(doOres)
             {
                 tick = DateTime.Now;
                 SubCycle(Resources.FindObjectsOfTypeAll<ResourceEntity>().Where(c => c.isActiveAndEnabled).Cast<BaseEntity>(), g_config.Ores, collectibles, ref aborted);
                 //Puts($"res: {(DateTime.Now - tick).TotalMilliseconds} ms");
             }
 
-            if (doLoots)
+            if(doLoots)
             {
                 tick = DateTime.Now;
                 SubCycle(Resources.FindObjectsOfTypeAll<LootContainer>().Where(c => c.isActiveAndEnabled).Cast<BaseEntity>(), g_config.Loots, collectibles, ref aborted);
@@ -386,19 +387,19 @@ namespace Oxide.Plugins
 
         void PopulationControl(IEnumerable<BaseEntity> matches, int cap)
         {
-            if (cap < 0) return;
-            if (matches.Count() < cap) return;
-            if (matches.Count() == 0) return;
+            if(cap < 0) return;
+            if(matches.Count() < cap) return;
+            if(matches.Count() == 0) return;
             var toDelete = matches.Count() - cap;
 
             var killed = 0;
             var shortPrefabName = matches.First().ShortPrefabName;
 
-            while (killed != toDelete)
+            while(killed != toDelete)
             {
                 var idx = Random.Range(0, matches.Count() - 1);
                 var match = matches.ElementAt(idx);
-                if (!match.enabled) continue;
+                if(!match.enabled) continue;
                 match.enabled = false;
                 match.Kill();
                 killed++;
@@ -409,12 +410,12 @@ namespace Oxide.Plugins
 
         void BatchSpawn(int current, int wanted, string prefab, List<CollectibleEntity> collectibles, ref bool aborted)
         {
-            if (aborted) return;
+            if(aborted) return;
 
             var toSpawn = wanted - current;
-            if (toSpawn <= 0) return;
+            if(toSpawn <= 0) return;
 
-            if (toSpawn > collectibles.Count)
+            if(toSpawn > collectibles.Count)
             {
                 Puts($"Could not find enough collectibles to complete the spawn cycle (this is normal after a server restart, it takes time!)");
                 aborted = true;
@@ -422,7 +423,7 @@ namespace Oxide.Plugins
             }
 
             Puts($"Spawning {toSpawn}X {prefab}!");
-            for (var i = 0; i < toSpawn; i++)
+            for(var i = 0; i < toSpawn; i++)
                 ReplaceCollectibleWithSomething(prefab, collectibles);
         }
 
@@ -440,7 +441,7 @@ namespace Oxide.Plugins
             spawnToReplace.Kill();
 
             var entity = GameManager.server.CreateEntity(prefabName, position, new Quaternion(0, 0, 0, 0));
-            if (entity == null)
+            if(entity == null)
             {
                 Puts($"Tried to spawn {prefabName} but entity could not be spawned.");
                 return;
@@ -453,8 +454,8 @@ namespace Oxide.Plugins
         void FixLoot(BasePlayer player)
         {
             var spawns = Resources.FindObjectsOfTypeAll<LootContainer>()
-                .Where(c => c.isActiveAndEnabled && c.ShortPrefabName.StartsWith("crate")).
-                OrderBy(c => c.transform.position.x).ThenBy(c => c.transform.position.z).ThenBy(c => c.transform.position.z)
+                .Where(c => c.isActiveAndEnabled && c.ShortPrefabName.StartsWith("crate"))
+                .OrderBy(c => c.transform.position.x).ThenBy(c => c.transform.position.z).ThenBy(c => c.transform.position.z)
                 .ToList();
 
             var count = spawns.Count;
@@ -463,31 +464,31 @@ namespace Oxide.Plugins
             var antirace = 0;
             var deleted = 0;
 
-            for (var i = 0; i < count; i++)
+            for(var i = 0; i < count; i++)
             {
                 var box = spawns[i];
                 var pos = GetBoxPos(box);
 
-                if (++antirace > racelimit)
+                if(++antirace > racelimit)
                 {
                     Puts("Race condition detected ?! report to author");
                     return;
                 }
 
                 var next = i + 1;
-                while (next < count)
+                while(next < count)
                 {
                     var box2 = spawns[next];
                     var pos2 = GetBoxPos(box2);
                     var distance = Vector2.Distance(pos, pos2);
 
-                    if (++antirace > racelimit)
+                    if(++antirace > racelimit)
                     {
                         Puts("Race condition detected ?! report to author");
                         return;
                     }
 
-                    if (distance < 5)
+                    if(distance < 5)
                     {
                         spawns.RemoveAt(next);
                         count--;
@@ -498,7 +499,7 @@ namespace Oxide.Plugins
                 }
             }
 
-            if (deleted > 0) Puts($"Deleted {deleted} stacked loot boxes (out of {count})");
+            if(deleted > 0) Puts($"Deleted {deleted} stacked loot boxes (out of {count})");
             player?.ChatMessage($"Deleted {deleted} stacked loot boxes (out of {count})");
         }
 
@@ -506,29 +507,29 @@ namespace Oxide.Plugins
         {
             // Delete all spawnables
             var ores = GetOreNodes();
-            foreach (var grp in ores)
-                foreach (var ore in grp.Value) ore.Kill();
+            foreach(var grp in ores)
+                foreach(var ore in grp.Value) ore.Kill();
 
             var loots = GetLootContainers();
-            foreach (var grp in loots)
-                foreach (var loot in grp.Value) loot.Kill();
+            foreach(var grp in loots)
+                foreach(var loot in grp.Value) loot.Kill();
 
             var animals = GetAnimals();
-            foreach (var grp in animals)
-                foreach (var animal in grp.Value) animal.Kill();
+            foreach(var grp in animals)
+                foreach(var animal in grp.Value) animal.Kill();
         }
 
-        //void OnEntitySpawned(BaseNetworkable entity)
-        //{
-        //    if (!g_spawnBlock) return;
+        void OnEntitySpawned(BaseNetworkable entity)
+        {
+            if(!g_spawnBlock) return;
 
-        //    var controlled = g_config.Animals.Union(g_config.Ores).Union(g_config.Loots);
-        //    var prefab = entity.PrefabName;
-        //    if (controlled.Any(c => c.Prefab == prefab && c.Max != -1))
-        //    {
-        //        entity.Kill();
-        //        //Puts($"BLOCKED OnEntitySpawned {entity.ShortPrefabName}");
-        //    }
-        //}
+            var controlled = g_config.Animals.Union(g_config.Ores).Union(g_config.Loots);
+            var prefab = entity.PrefabName;
+            if(controlled.Any(c => c.Prefab == prefab && c.Max != -1))
+            {
+                entity.Kill();
+                Puts($"BLOCKED OnEntitySpawned {entity.ShortPrefabName}");
+            }
+        }
     }
 }
